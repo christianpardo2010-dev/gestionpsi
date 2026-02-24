@@ -21,13 +21,12 @@
     <script>
         const frame = document.getElementById('appFrame');
 
-        // 1. FUNCIÓN: ENVIAR DATOS AL IFRAME (PUSH)
-        function enviarCredenciales() {
+        // FUNCIÓN DE RESPUESTA
+        function responderDatos() {
             const user = localStorage.getItem('usuario_gestion_psi');
             const token = localStorage.getItem('token_gestion_psi');
             const cache = localStorage.getItem('psi_data_cache');
             
-            // Enviamos con origen '*' para asegurar que llegue
             if (frame && frame.contentWindow) {
                 frame.contentWindow.postMessage({
                     action: 'INIT_RESPONSE',
@@ -38,17 +37,14 @@
             }
         }
 
-        // 2. DISPARADOR: APENAS CARGA EL IFRAME, LE INYECTAMOS LOS DATOS
-        frame.onload = function() {
-            // Enviamos inmediatamente
-            enviarCredenciales();
-            // Y reenviamos a los 500ms y 1500ms por seguridad (iOS a veces es lento)
-            setTimeout(enviarCredenciales, 500);
-            setTimeout(enviarCredenciales, 1500);
-        };
-
-        // 3. ESCUCHA: GUARDAR LO QUE MANDE LA APP
+        // ESCUCHA INTELIGENTE
         window.addEventListener('message', function(e) {
+            // 1. App pide datos (Handshake)
+            if (e.data.action === 'REQUEST_DATA') {
+                responderDatos();
+            }
+            
+            // 2. App pide guardar (Save)
             if (e.data.action === 'SAVE') {
                 localStorage.setItem(e.data.key, e.data.value);
             }
