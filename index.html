@@ -3,42 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestión PSI</title>
-        <!-- CONFIGURACIÓN PWA PARA IOS (BRIDGE) -->
+    <!-- CONFIGURACIÓN PWA PARA IOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#6c5ce7">
-    
-    <!-- ÍCONOS (Los mismos de tu App) -->
     <link rel="apple-touch-icon" sizes="180x180" href="https://img.icons8.com/color/180/brain--v1.png?v=1">
     <link rel="icon" type="image/png" sizes="180x180" href="https://img.icons8.com/color/180/brain--v1.png?v=1">
-
     <style>
-        /* Blindaje visual completo */
-        body, html { 
-            margin: 0; 
-            padding: 0; 
-            height: 100%; 
-            width: 100%;
-            background-color: #050505; /* Fondo Negro Profundo */
-            overflow: hidden; /* Evita rebotes elásticos */
-        }
-        
-        iframe { 
-            border: none; 
-            width: 100%; 
-            height: 100%; 
-            display: block; 
-            background-color: #050505;
-        }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background-color: #050505; overflow: hidden; }
+        iframe { border: none; width: 100%; height: 100%; display: block; background-color: #050505; }
     </style>
 </head>
 <body>
-    <!-- AQUÍ PEGA TU URL DE GOOGLE SCRIPT DONDE DICE src="..." -->
-    <iframe 
-        id="appFrame"
-        src="https://script.google.com/macros/s/AKfycbxZfMM-RlGFW5MJNxIKmQBIRGM5Zuy28NBzCgWK8T5MvRZ4WlBSpr49322GPX2qJ5IxlQ/exec" 
-        allow="geolocation; microphone; camera; fullscreen">
-    </iframe>
+    <!-- REEMPLAZA LA URL ABAJO POR TU URL DE GOOGLE SCRIPT -->
+    <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbxZfMM-RlGFW5MJNxIKmQBIRGM5Zuy28NBzCgWK8T5MvRZ4WlBSpr49322GPX2qJ5IxlQ/exec" allow="geolocation; microphone; camera; fullscreen"></iframe>
+
+    <script>
+        // EL BANCO DE MEMORIA (BRIDGE V2)
+        const frame = document.getElementById('appFrame');
+        
+        window.addEventListener('message', function(e) {
+            // 1. GUARDAR DATOS (La App nos pide guardar)
+            if (e.data.action === 'SAVE') {
+                localStorage.setItem(e.data.key, e.data.value);
+            }
+            
+            // 2. INICIAR (La App nos pide datos al arrancar)
+            if (e.data.action === 'REQUEST_INIT') {
+                const user = localStorage.getItem('usuario_gestion_psi');
+                const token = localStorage.getItem('token_gestion_psi');
+                const cache = localStorage.getItem('psi_data_cache');
+                
+                // Se los enviamos de vuelta al Iframe
+                frame.contentWindow.postMessage({
+                    action: 'INIT_RESPONSE',
+                    user: user,
+                    token: token,
+                    cache: cache
+                }, '*');
+            }
+        });
+    </script>
 </body>
 </html>
