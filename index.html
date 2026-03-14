@@ -2,53 +2,37 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Gestión PSI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#6c5ce7">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/christianpardo2010-dev/gestionpsi/raw/main/cerebro.png">
-    <link rel="icon" type="image/png" sizes="180x180" href="https://github.com/christianpardo2010-dev/gestionpsi/raw/main/cerebro.png"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- REEMPLAZAR EN EL HEAD DE TU INDEX.HTML EN GITHUB -->
+<title>Gestión PSI</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gestión PSI">
+
+<!-- Icono Local: Ya no dependemos de enlaces externos -->
+<link rel="apple-touch-icon" href="cerebro.png?v=4">
+<link rel="icon" type="image/png" href="cerebro.png?v=4">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6c5ce7">
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; background-color: #050505; overflow: hidden; }
-        iframe { border: none; width: 100%; height: 100%; display: block; background-color: #050505; }
+        /* Eliminamos margenes y ocultamos el scroll del envoltorio */
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            width: 100%;
+            overflow: hidden; 
+            background-color: #6c5ce7; /* Color de tu app para que no haya flash blanco */
+        }
+        /* El iframe ocupa toda la pantalla */
+        iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+        }
     </style>
 </head>
 <body>
-    <!-- PONER URL VERSION DEV ACÄ-->
     <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbxsNI91AKtzNHLfasbtbmdGf4e-QGTM8ExUo-G5c6okhTvXIKVKkQyygY5Qv_e2VOFWBA/exec" allow="geolocation; microphone; camera; fullscreen"></iframe>
-
-    <script>
-        const frame = document.getElementById('appFrame');
-
-        // FUNCIÓN DE RESPUESTA
-        function responderDatos() {
-            const user = localStorage.getItem('usuario_gestion_psi');
-            const token = localStorage.getItem('token_gestion_psi');
-            const cache = localStorage.getItem('psi_data_cache');
-            
-            if (frame && frame.contentWindow) {
-                frame.contentWindow.postMessage({
-                    action: 'INIT_RESPONSE',
-                    user: user,
-                    token: token,
-                    cache: cache
-                }, '*');
-            }
-        }
-
-        // ESCUCHA INTELIGENTE
-        window.addEventListener('message', function(e) {
-            // 1. App pide datos (Handshake)
-            if (e.data.action === 'REQUEST_DATA') {
-                responderDatos();
-            }
-            
-            // 2. App pide guardar (Save)
-            if (e.data.action === 'SAVE') {
-                localStorage.setItem(e.data.key, e.data.value);
-            }
-        });
-    </script>
-</body>
 </html>
