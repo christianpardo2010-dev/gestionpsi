@@ -5,37 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidad - Gestión PSI</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; padding: 20px; color: #333; max-width: 800px; margin: auto; }
-        h1 { color: #2c3e50; }
-        h2 { color: #34495e; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .tech-box { background: #f9f9f9; border-left: 5px solid #673ab7; padding: 15px; margin: 20px 0; font-size: 0.9em; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; padding: 30px; color: #333; max-width: 850px; margin: auto; }
+        h1 { color: #512da8; border-bottom: 2px solid #512da8; padding-bottom: 10px; }
+        h2 { color: #311b92; margin-top: 25px; }
+        .security-card { background: #f3e5f5; border-radius: 8px; padding: 20px; border-left: 6px solid #512da8; margin: 20px 0; }
+        .footer { margin-top: 40px; font-size: 0.9em; color: #666; border-top: 1px solid #eee; padding-top: 20px; }
     </style>
 </head>
 <body>
-    <h1>Política de Privacidad - Gestión PSI</h1>
-    <p><strong>Última actualización:</strong> 16 de marzo de 2026</p>
+    <h1>Política de Privacidad de Gestión PSI</h1>
+    <p><strong>Versión:</strong> 1.1 | <strong>Última actualización:</strong> 16 de marzo de 2026</p>
 
-    <h2>1. Compromiso de Privacidad</h2>
-    <p>Gestión PSI es una herramienta diseñada para profesionales de la salud mental. Entendemos la sensibilidad de la información manejada y aplicamos estándares de seguridad rigurosos.</p>
+    <p>En <strong>Sintoma Software</strong>, la privacidad y la seguridad de la información son pilares fundamentales de nuestras soluciones tecnológicas para profesionales de la salud mental. Esta política detalla cómo protegemos los datos que usted gestiona a través de la aplicación.</p>
 
-    <h2>2. Seguridad y Cifrado de Datos</h2>
-    <div class="tech-box">
-        Gestión PSI implementa estrictas medidas de seguridad. Todo el tráfico de datos entre el dispositivo y nuestra infraestructura está cifrado mediante protocolos <strong>TLS (HTTPS)</strong>. Para los datos altamente sensibles (DNI, credenciales, notas clínicas y observaciones), implementamos una capa de encriptación mediante el algoritmo <strong>Base64 con integridad UTF-8</strong> antes de su almacenamiento. La gestión de claves se realiza a través de servicios de secretos de Google, asegurando que los datos en reposo no sean accesibles sin las credenciales autorizadas del profesional.
+    <h2>1. Seguridad y Cifrado de Información</h2>
+    <div class="security-card">
+        <strong>Protección de Grado Avanzado:</strong><br>
+        Toda la comunicación de datos se realiza bajo protocolos <strong>TLS (HTTPS)</strong>, asegurando que la información viaje de forma privada e inalterable. Adicionalmente, Sintoma Software implementa una capa de <strong>cifrado interno (Base64 UTF-8)</strong> para datos críticos como identificadores de pacientes y notas clínicas antes de su almacenamiento, garantizando que la información sensible permanezca protegida incluso en estado de reposo.
     </div>
 
-    <h2>3. Datos Recopilados</h2>
+    <h2>2. Datos Procesados</h2>
     <ul>
-        <li><strong>Autenticación:</strong> Dirección de correo electrónico del profesional.</li>
-        <li><strong>Sesión:</strong> Se genera un token aleatorio único almacenado en el <i>localStorage</i> del dispositivo para mantener la sesión activa de forma segura.</li>
-        <li><strong>Datos de Pacientes:</strong> Los datos ingresados por el profesional se almacenan exclusivamente en la infraestructura de Google Cloud (Apps Script/Sheets) del propietario.</li>
+        <li><strong>Identificación Profesional:</strong> Se utiliza su correo electrónico exclusivamente para la autenticación y vinculación con su entorno de gestión.</li>
+        <li><strong>Gestión Administrativa:</strong> Los datos de pacientes, turnos y observaciones ingresados son procesados y almacenados de forma centralizada en infraestructura segura de Google Cloud, bajo la administración técnica exclusiva de Sintoma Software.</li>
+        <li><strong>Persistencia de Sesión:</strong> Se utiliza un token técnico local para facilitar el acceso recurrente del profesional sin comprometer la seguridad.</li>
     </ul>
 
-    <h2>4. Eliminación de Datos</h2>
-    <p>Los usuarios pueden solicitar la eliminación total de su cuenta y registros asociados enviando un correo electrónico a: <strong>christianpardo2010@gmail.com</strong>. El proceso de eliminación se completará en un plazo máximo de 72 horas.</p>
+    <h2>3. Control y Eliminación de Datos</h2>
+    <p>Sintoma Software reconoce su derecho sobre la información. En cumplimiento con las normativas internacionales, usted puede solicitar la eliminación total de su cuenta y sus registros asociados escribiendo a <strong>[TU_MAIL_AQUÍ]</strong>. Nuestro equipo procesará su solicitud en un plazo máximo de 72 horas.</p>
 
-    <h2>5. Flujo de Información</h2>
-    <p>Los datos no transitan por servidores de terceros. GitHub se utiliza únicamente para el alojamiento del frontend, mientras que la información sensible viaja directamente hacia los servidores de Google.</p>
+    <h2>4. Transparencia con Terceros</h2>
+    <p>Sintoma Software no comercializa, alquila ni comparte información con empresas de publicidad o terceros ajenos a la funcionalidad técnica de la aplicación. La infraestructura de GitHub se utiliza únicamente para servir la interfaz visual, asegurando que los datos sensibles nunca transiten por sus servidores.</p>
 
-    <p>Para cualquier duda, contáctenos en: <strong>christianpardo2010@gmail.com</strong></p>
+    <div class="footer">
+        Para consultas técnicas o legales, por favor contáctenos en: <strong>christianpardo2010@gmail.com</strong><br>
+        © 2026 Sintoma Software - Buenos Aires, Argentina.
+    </div>
 </body>
 </html>
