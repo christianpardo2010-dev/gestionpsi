@@ -1,0 +1,21 @@
+{
+  "name": "Gestión PSI",
+  "short_name": "Gestión PSI",
+  "description": "Sistema de Gestión Profesional para Psicólogos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#6c5ce7",
+  "icons": [
+    {
+      "src": "cerebro.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "cerebro.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
